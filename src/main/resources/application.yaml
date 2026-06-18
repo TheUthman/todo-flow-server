@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    # Use H2 In-Memory database (Zero setup required)
+    url: jdbc:h2:mem:tododb;DB_CLOSE_DELAY=-1
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
+
+  h2:
+    console:
+      enabled: true # Allows you to see the DB at /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+jwt:
+  # Hardcoded for portfolio simplicity
+  secret: 7f4a9c2e8b1d6f3a5e9c7d2b8f4a1e6c9d3f7b5a2e8c1d4f6a9b3e7c2d5f8a1
+  expiration: 86400000

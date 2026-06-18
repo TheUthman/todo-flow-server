@@ -1,0 +1,18 @@
+package com.uthman.to_do_app.exception;
+
+import lombok.*;
+
+import java.time.LocalDateTime;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class ErrorResponse {
+
+    private String message;
+
+    private int status;
+
+    private LocalDateTime timestamp;
+}
