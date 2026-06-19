@@ -1,14 +1,21 @@
 spring:
   datasource:
-    # Use H2 In-Memory database (Zero setup required)
-    url: jdbc:h2:mem:tododb;DB_CLOSE_DELAY=-1
-    username: sa
-    password: password
-    driver-class-name: org.h2.Driver
+    # H2 In-Memory database (commented out for PostgreSQL)
+    # url: jdbc:h2:mem:tododb;DB_CLOSE_DELAY=-1
+    # username: sa
+    # password: password
+    # driver-class-name: org.h2.Driver
 
-  h2:
-    console:
-      enabled: true # Allows you to see the DB at /h2-console
+    # PostgreSQL Configuration
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/tododb}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:your_password}
+    driver-class-name: org.postgresql.Driver
+
+  # H2 Console (commented out for PostgreSQL)
+  # h2:
+  #   console:
+  #     enabled: true # Allows you to see the DB at /h2-console
 
   jpa:
     hibernate:
@@ -16,7 +23,10 @@ spring:
     show-sql: false
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
+        # H2 Dialect (commented out for PostgreSQL)
+        # dialect: org.hibernate.dialect.H2Dialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect # Correct dialect for PostgreSQL
+        format_sql: true
 
 jwt:
   # Hardcoded for portfolio simplicity
