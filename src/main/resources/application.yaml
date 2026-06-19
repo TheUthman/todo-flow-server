@@ -1,21 +1,9 @@
 spring:
   datasource:
-    # H2 In-Memory database (commented out for PostgreSQL)
-    # url: jdbc:h2:mem:tododb;DB_CLOSE_DELAY=-1
-    # username: sa
-    # password: password
-    # driver-class-name: org.h2.Driver
-
-    # PostgreSQL Configuration
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/tododb}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:your_password}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
-
-  # H2 Console (commented out for PostgreSQL)
-  # h2:
-  #   console:
-  #     enabled: true # Allows you to see the DB at /h2-console
 
   jpa:
     hibernate:
@@ -23,12 +11,8 @@ spring:
     show-sql: false
     properties:
       hibernate:
-        # H2 Dialect (commented out for PostgreSQL)
-        # dialect: org.hibernate.dialect.H2Dialect
-        dialect: org.hibernate.dialect.PostgreSQLDialect # Correct dialect for PostgreSQL
-        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 jwt:
-  # Hardcoded for portfolio simplicity
-  secret: 7f4a9c2e8b1d6f3a5e9c7d2b8f4a1e6c9d3f7b5a2e8c1d4f6a9b3e7c2d5f8a1
+  secret: ${JWT_SECRET}
   expiration: 86400000
